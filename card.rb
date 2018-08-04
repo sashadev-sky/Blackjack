@@ -7,7 +7,7 @@ class Card
     :diamonds => "♦",
     :hearts   => "♥",
     :spades   => "♠"
-  }
+  }.freeze
 
   VALUE_STRINGS = {
     :deuce => "2",
@@ -23,7 +23,7 @@ class Card
     :queen => "Q",
     :king  => "K",
     :ace   => "A"
-  }
+  }.freeze
 
   BLACKJACK_VALUE = {
     :deuce => 2,
@@ -38,14 +38,14 @@ class Card
     :jack  => 10,
     :queen => 10,
     :king  => 10
-  }
+  }.freeze
 
   SUIT_COLORS = {
     :clubs => :black,
     :spades => :black,
     :diamonds => :red,
     :hearts => :red
-  }
+  }.freeze
 
   def self.suits
     SUIT_STRINGS.keys

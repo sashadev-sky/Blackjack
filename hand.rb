@@ -1,9 +1,9 @@
 require_relative 'card'
 
 class Hand
-  
+
   def self.deal_from(deck)
-    Hand.new(deck.take(1))
+    Hand.new(deck.take(2))
   end
 
   attr_accessor :cards
