@@ -19,6 +19,10 @@ class Player
     @hand = hand
   end
 
+  def select_move
+    responce = gets.chomp.downcase[0]  
+  end
+
   def return_cards(deck)
     hand.return_cards(deck)
     @hand = nil
@@ -26,10 +30,14 @@ class Player
 
   def place_bet(dealer)
     begin
-      bet_amt = gets.chomp.to_i
+      bet_amt = Integer(gets.chomp)
       raise RuntimeError, "Not enough money. Please place a lower bet" if bet_amt > @bankroll
     rescue RuntimeError => e
       puts e.message
+      retry
+    rescue ArgumentError
+      puts "Try again. Please enter your bet amount as a plain integer, leaving off currency or commas:"
+      print "> "
       retry
     end
     dealer.take_bet(self, bet_amt)

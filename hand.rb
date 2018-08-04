@@ -1,9 +1,10 @@
 require_relative 'card'
 
 class Hand
-  # def self.deal_from(deck)
-  #   Hand.new(deck.take(1))
-  # end
+  
+  def self.deal_from(deck)
+    Hand.new(deck.take(1))
+  end
 
   attr_accessor :cards
 
@@ -60,6 +61,6 @@ class Hand
   end
 
   def to_s
-    @cards.join(",") + " (#{points})"
+    @cards.join(",")
   end
 end
