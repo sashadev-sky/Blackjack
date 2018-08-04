@@ -20,7 +20,13 @@ class Player
   end
 
   def select_move
-    responce = gets.chomp.downcase[0]  
+    responce = gets.chomp.downcase[0]
+    puts "                           "
+    until responce == "h" || responce == "s"
+      print "Try again. Please enter (h)it or (s)tand> "
+      responce = gets.chomp.downcase[0]
+    end
+    responce
   end
 
   def return_cards(deck)

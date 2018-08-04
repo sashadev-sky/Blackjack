@@ -56,7 +56,7 @@ class BlackjackGame
   end
 
   def get_player_move(player)
-    print "#{player.name}: (h)it or (s)tay? > "
+    print "#{player.name}: (h)it or (s)tand? > "
     move = player.select_move
     case move
     when "h" then
@@ -69,12 +69,12 @@ class BlackjackGame
 
   def display_status
     system("clear")
-    puts "Dealer:    Hand: #{dealer.hand}  (Count: #{dealer.hand.points})"
+    puts "Dealer:    Hand: #{dealer.hand}  (Count: #{dealer.hand.points})   Current bet: N/A"
     puts "                             "
     players.each do |player|
       next if player.is_a?(Dealer)
       puts "#{player.name}:  Hand: #{player.hand}  (Count: #{player.hand.points})  Current bet: $#{dealer.bets[player]}"
-      puts "                          "
+      puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - -"
     end
 
   end
