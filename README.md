@@ -31,3 +31,11 @@
 - RSpec
   - Unit Testing
     - Method doubles
+- Metaprogramming
+  - `send` method
+- `colorize` gem
+  - `background` argument for rendering cards
+- Freezing constants
+- Overriding `==`
+- Overriding `to_s`
+- Class inheritance
