@@ -6,8 +6,8 @@
 
 - To play, run the command `ruby lib/blackjack.rb` in your terminal
 - This game supports multiple players: currently it is set to one player vs. a dealer
-  - To add more, utilize the `add_player` method in the `blackjack.rb` file before running the game
-  - Reference how player 1 was added on line 131 in the file if you need additional help
+  - To add more, utilize the `add_player` method in the `blackjack.rb` file and save your changes before running the game
+  - Reference the commented out call to `add_player` at the bottom of the file as an example
 
 ## House Rules
 - Each player starts with a bankroll of $1000
