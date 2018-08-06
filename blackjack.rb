@@ -55,8 +55,8 @@ class BlackjackGame
     puts "....Dealer's move...." unless dealer.points == 21
     sleep(1)
     dealer.face_up
-    sleep(1)
     display_status
+    sleep(1)
     get_player_move(dealer) unless players.all? { |player| player.busted? }
     players.each { |player| player.bankroll -= player.bet_amt }
   end
@@ -72,9 +72,10 @@ class BlackjackGame
 
   def get_player_move(player)
     if player.is_a?(Dealer)
-      until player.points >= 17 || player.busted?
+      until player.points >= 17
         player.hit(deck)
         display_status
+        sleep(1)
       end
     else
       print "#{player.name}: (h)it or (s)tand? > "
@@ -83,7 +84,7 @@ class BlackjackGame
       when "h" then
         player.hit(deck)
         display_status
-        get_player_move(player) unless player.busted? || player.points == 21
+        get_player_move(player) unless player.points >= 21
       when "s" then
         display_status
       end
