@@ -22,4 +22,5 @@
   - If a player's hand is not busted (over 21) and has a higher score than the dealer, the player will receive their bet double at the end of the round
   - Otherwise, the player will lose the amount they bet (ties with the dealer are considered a loss)
 - Bets are reset after each round
+- If a player goes bankrupt, they are out of the game
 - Rounds are unlimited and the game is only over when all of the players go bankrupt (in this case, when they can't afford the minimum bet of $2)
