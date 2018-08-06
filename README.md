@@ -11,13 +11,15 @@
 
 ## House Rules
 - Each player starts with a bankroll of $1000
-- Each player enters an initial bet before each round
+- Each round begins with players entering their bets
   - The minimum bet is $2
   - The maximum is equal to the current value of the players bankroll
-- The deck is shuffled prior to each round to prevent counting cards
+- The deck is shuffled prior to each round
 - 2 cards are dealt to each player and the dealer from a standard deck of 52 cards
+  - The dealer's 2nd card will be face down until the players complete their turns
   - An ace counts as a 1 or 11
   - Face cards are 10 and any other card is its pip value
+- The dealer will always hit until the value of their hand is >= 17 points
 -  Players play against the dealer
   - If a player's hand is not busted (over 21) and has a higher score than the dealer, the player will receive their bet double at the end of the round
   - Otherwise, the player will lose the amount they bet (ties with the dealer are considered a loss)
