@@ -1,10 +1,9 @@
 require_relative 'deck'
 require_relative 'player'
 require_relative 'dealer'
-require_relative 'hand'
 
 class BlackjackGame
-  attr_reader :players, :deck, :dealer, :player
+  attr_reader :players, :dealer, :player
 
   MIN_BET = 2
 
@@ -28,7 +27,7 @@ class BlackjackGame
 
   def welcome_message
     system("clear")
-    @players.each do |player|
+    players.each do |player|
       puts "Welcome #{player.name}! You currently have $#{player.bankroll}"
       sleep(1)
       puts "                  "
@@ -53,8 +52,11 @@ class BlackjackGame
       next if player.points == 21
       get_player_move(player)
     end
-    puts "....Dealer's move...." unless dealer.hand.points == 21
-    sleep(2)
+    puts "....Dealer's move...." unless dealer.points == 21
+    sleep(1)
+    dealer.face_up
+    sleep(1)
+    display_status
     get_player_move(dealer) unless players.all? { |player| player.busted? }
     players.each { |player| player.bankroll -= player.bet_amt }
   end
@@ -124,11 +126,15 @@ class BlackjackGame
     abort("Sorry, all players do not have enough money to continue")
   end
 
+  private
+
+  attr_reader :deck
+
 end
 
 if $PROGRAM_NAME == __FILE__
   g = BlackjackGame.new
   g.add_player("Player 1", 1_000)
-  g.add_player("Player 2", 1_000)
+  # g.add_player("Player 2", 1_000)
   g.play
 end

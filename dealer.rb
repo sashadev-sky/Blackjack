@@ -16,6 +16,11 @@ class Dealer < Player
 
   def deal_in(hand)
     @hand = hand
+    @hand.face_down
+  end
+
+  def face_up
+    @hand.face_up
   end
 
   def take_bet(player, amt)
