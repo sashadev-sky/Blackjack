@@ -17,7 +17,6 @@ class Hand
     ace = 0
 
     @cards.each do |card|
-      next if card.revealed == false
       case card.value
       when :ace
         points_count += 11
@@ -39,20 +38,28 @@ class Hand
     points > 21
   end
 
-  def face_down
-    @cards.last.revealed = false
-  end
-
   def hit(deck)
     raise "already busted" if busted?
     @cards.concat(deck.take(1))
   end
 
   def beats?(other_hand)
-    return false if self.points < other_hand.points && !(other_hand.busted?)
-    return false if self.points == other_hand.points || self.busted?
-    return true if self.points > other_hand.points && !(self.busted?)
-    return true if !(self.busted?) && other_hand.busted?
+    if self.busted?
+      # puts "You have busted"
+      return false
+    elsif self.points < other_hand.points && !(other_hand.busted?)
+      # puts "Dealer wins this round!"
+      return false
+    elsif self.points == other_hand.points && !self.busted?
+      # puts "Dealer wins all ties, you lose this round!"
+      return false
+    elsif self.points > other_hand.points && !(self.busted?)
+      # puts "You win this round"
+      return true
+    elsif !(self.busted?) && other_hand.busted?
+      # puts "The dealer has busted. You win this round"
+      return true
+    end
   end
 
   def return_cards(deck)

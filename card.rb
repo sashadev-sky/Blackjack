@@ -56,14 +56,13 @@ class Card
   end
 
   attr_reader :suit, :value
-  attr_accessor :revealed
 
   def initialize(suit, value)
     unless Card.suits.include?(suit) and Card.values.include?(value)
       raise "illegal suit (#{suit}) or value (#{value})"
     end
 
-    @suit, @value, @revealed = suit, value, true
+    @suit, @value = suit, value
   end
 
   def blackjack_value
@@ -80,22 +79,14 @@ class Card
     end
   end
 
-  def revealed?
-    @revealed
-  end
-
   def color
     SUIT_COLORS[self.suit]
   end
 
 
   def to_s
-    if revealed?
-      stringified = VALUE_STRINGS[value] + SUIT_STRINGS[suit]
-      stringified.colorize(:color => SUIT_COLORS[self.suit], :background => :light_white)
-    else
-      "??".colorize(:background => :light_blue)
-    end
+    stringified = VALUE_STRINGS[value] + SUIT_STRINGS[suit]
+    stringified.colorize(:color => SUIT_COLORS[self.suit], :background => :light_white)
   end
 
 end
