@@ -72,11 +72,9 @@ class BlackjackGame
 
   def get_player_move(player)
     if player.is_a?(Dealer)
-      until player.points >= 17
-        player.hit(deck)
-        display_status
-        sleep(1)
-      end
+      player.play_hand(deck)
+      display_status
+      sleep(1)
     else
       print "#{player.name}: (h)it or (s)tand? > "
       move = player.get_move

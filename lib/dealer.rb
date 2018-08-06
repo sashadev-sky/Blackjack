@@ -14,6 +14,11 @@ class Dealer < Player
     raise "Dealer doesn't bet" if dealer.is_a?(Dealer)
   end
 
+  def play_hand(deck)
+    hit(deck) until points >= 17
+  end
+
+
   def deal_in(hand)
     @hand = hand
     @hand.face_down

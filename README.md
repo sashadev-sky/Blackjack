@@ -26,3 +26,8 @@
 - Bets are reset after each round
 - If a player goes bankrupt, they are out of the game
 - Rounds are unlimited and the game is only over when all of the players go bankrupt (in this case, when they can't afford the minimum bet of $2)
+
+#### Ruby Concepts (personal use)
+- RSpec
+  - Unit Testing
+    - Method doubles
