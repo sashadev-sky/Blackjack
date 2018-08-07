@@ -4,10 +4,15 @@
 
 ## Overview
 
-- To play, run the command `ruby lib/blackjack.rb` in your terminal
+- To play, run the command `bundle install` then `ruby lib/blackjack.rb` in your terminal
 - This game supports multiple players: currently it is set to one player vs. a dealer
   - To add more, utilize the `add_player` method in the `blackjack.rb` file and save your changes before running the game
   - Reference the commented out call to `add_player` at the bottom of the file as an example
+
+## Testing
+  - Written in RSpec
+  - To test individual spec files:
+    - run, for ex: `bundle exec rspec ./spec/dealer_spec.rb`
 
 ## House Rules
 - Each player starts with a bankroll of $1000
@@ -31,8 +36,7 @@
 - RSpec
   - Unit Testing
     - Method doubles
-- Metaprogramming
-  - `send` method
+- `send` method
 - `colorize` gem
   - `background` argument for rendering cards
 - Freezing constants
