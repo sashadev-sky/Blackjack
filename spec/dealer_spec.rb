@@ -20,7 +20,7 @@ describe Dealer do
       dealer.play_hand(deck)
     end
 
-    it "hits until seventeen acheived" do
+    it "hits until seventeen" do
       points = 12
       allow(dealer_hand).to receive(:points) { points }
 
@@ -38,6 +38,40 @@ describe Dealer do
       expect(dealer_hand).to receive(:hit).once.with(deck) { points = 22 }
 
       dealer.play_hand(deck)
+    end
+  end
+
+  context "with a player" do
+    let(:player) { double("player") }
+    let(:dealer_hand) { double("hand") }
+    let(:player_hand) { double("player_hand") }
+
+    before(:each) do
+      dealer.hand = dealer_hand
+      allow(player).to receive(:hand) { player_hand }
+
+      dealer.take_bet(player, 100)
+    end
+
+    it "records bets" do
+      expect(dealer.bets).to eq({ player => 100 })
+    end
+
+    it "does not pay losers (or ties)" do
+      expect(player_hand).to receive(:beats?).with(dealer_hand).and_return(false)
+      expect(player).to receive(:name)
+      expect(player).not_to receive(:pay_winnings)
+
+      dealer.pay_bets
+    end
+
+    it "does pay winners" do
+      expect(player_hand).to receive(:beats?).with(dealer_hand).and_return(true)
+      expect(player).to receive(:name)
+
+      expect(player).to receive(:pay_winnings).with(200)
+
+      dealer.pay_bets
     end
   end
 
