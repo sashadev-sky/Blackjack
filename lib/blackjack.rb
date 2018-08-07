@@ -1,11 +1,13 @@
 require_relative 'deck'
 require_relative 'player'
 require_relative 'dealer'
+require 'byebug'
 
 class BlackjackGame
   attr_reader :players, :dealer, :player
 
   MIN_BET = 2
+  MAX_PLAYERS = 3
 
   def initialize
     @player = player
@@ -117,8 +119,18 @@ class BlackjackGame
   end
 
   def add_player(name, buy_in)
-    @player = Player.buy_in(name, buy_in)
-    @players << @player
+    if @players.count == MAX_PLAYERS
+      system("clear")
+      puts "                "
+      puts "You tried to add more than 3 players: the maximum number is 3."
+      sleep(3)
+      puts "                "
+      puts "The game will begin with the first three players added."
+      sleep(4)
+    else
+      @player = Player.buy_in(name, buy_in)
+      @players << @player
+    end
   end
 
   def end_game
@@ -132,8 +144,11 @@ class BlackjackGame
 end
 
 if $PROGRAM_NAME == __FILE__
+  # debugger
   g = BlackjackGame.new
   g.add_player("Player 1", 1_000)
-  # g.add_player("Player 2", 1_000)
+  g.add_player("Player 2", 1_000)
+  g.add_player("Player 3", 1_000)
+  g.add_player("Player 4", 1_000)
   g.play
 end
