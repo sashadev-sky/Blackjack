@@ -1,7 +1,6 @@
 require_relative 'deck'
 require_relative 'player'
 require_relative 'dealer'
-require 'byebug'
 
 class BlackjackGame
   attr_reader :players, :dealer, :player
@@ -144,7 +143,6 @@ class BlackjackGame
 end
 
 if $PROGRAM_NAME == __FILE__
-  # debugger
   g = BlackjackGame.new
   g.add_player("Player 1", 1_000)
   g.add_player("Player 2", 1_000)
