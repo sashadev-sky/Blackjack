@@ -148,6 +148,5 @@ if $PROGRAM_NAME == __FILE__
   g.add_player("Player 1", 1_000)
   # g.add_player("Player 2", 1_000)
   # g.add_player("Player 3", 1_000)
-  # g.add_player("Player 4", 1_000)
   g.play
 end
