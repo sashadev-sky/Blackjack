@@ -17,9 +17,9 @@ describe Deck do
   end
 
   let(:cards) do
-    [ double("card", :suit => :spades, :value => :king),
-      double("card", :suit => :spades, :value => :queen),
-      double("card", :suit => :spades, :value => :jack) ]
+    [ double("card1", :suit => :spades, :value => :king),
+      double("card2", :suit => :spades, :value => :queen),
+      double("card3", :suit => :spades, :value => :jack) ]
   end
 
   describe "#initialize" do
@@ -36,6 +36,10 @@ describe Deck do
 
   let(:deck) do
     Deck.new(cards.dup)
+  end
+
+  it "should not expose its cards" do
+    expect(deck).not_to respond_to(:cards)
   end
 
   describe "#take" do
@@ -70,6 +74,12 @@ describe Deck do
       expect(deck.count).to eq(6)
     end
 
+    it "should not destroy the passed array" do
+      more_cards_dup = more_cards.dup
+      deck.return(more_cards_dup)
+      expect(more_cards_dup).to eq(more_cards)
+    end
+
     it "adds new cards to the bottom of the deck" do
       deck.return(more_cards)
       deck.take(3) # toss 3 cards away
@@ -77,6 +87,22 @@ describe Deck do
       expect(deck.take(1)).to eq(more_cards[0..0])
       expect(deck.take(1)).to eq(more_cards[1..1])
       expect(deck.take(1)).to eq(more_cards[2..2])
+    end
+  end
+
+  describe '#deal_hand' do
+    let(:deck) { Deck.new }
+
+    it 'should return a new hand' do
+      hand = deck.deal_hand
+      expect(hand).to be_a(Hand)
+      expect(hand.cards.count).to eq(2)
+    end
+
+    it 'should take cards from the deck' do
+      expect do
+        deck.deal_hand
+      end.to change{ deck.count }.by(-2)
     end
   end
 
