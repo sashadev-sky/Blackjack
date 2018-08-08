@@ -17,11 +17,9 @@ describe Deck do
   end
 
   let(:cards) do
-    cards = [
-      double("card", :suit => :spades, :value => :king),
+    [ double("card", :suit => :spades, :value => :king),
       double("card", :suit => :spades, :value => :queen),
-      double("card", :suit => :spades, :value => :jack)
-    ]
+      double("card", :suit => :spades, :value => :jack) ]
   end
 
   let(:deck) do
@@ -50,11 +48,9 @@ describe Deck do
 
   describe "#return" do
     let(:more_cards) do
-      more_cards = [
-        double("card", :suit => :hearts, :value => :four),
+      [ double("card", :suit => :hearts, :value => :four),
         double("card", :suit => :hearts, :value => :five),
-        double("card", :suit => :hearts, :value => :six)
-      ]
+        double("card", :suit => :hearts, :value => :six) ]
     end
 
     it "returns cards to the deck" do
