@@ -38,7 +38,7 @@ describe Deck do
     Deck.new(cards.dup)
   end
 
-  it "should not expose its cards" do
+  it "does not expose its cards" do
     expect(deck).not_to respond_to(:cards)
   end
 
@@ -55,7 +55,7 @@ describe Deck do
     end
 
 
-    it "doesn't allow you to take more cards than are in the deck" do
+    it "does not allow you to take more cards than are in the deck" do
       expect do
         deck.take(4)
       end.to raise_error("not enough cards")
@@ -74,7 +74,7 @@ describe Deck do
       expect(deck.count).to eq(6)
     end
 
-    it "should not destroy the passed array" do
+    it "does not destroy the passed array" do
       more_cards_dup = more_cards.dup
       deck.return(more_cards_dup)
       expect(more_cards_dup).to eq(more_cards)
@@ -93,13 +93,13 @@ describe Deck do
   describe '#deal_hand' do
     let(:deck) { Deck.new }
 
-    it 'should return a new hand' do
+    it 'returns a new hand' do
       hand = deck.deal_hand
       expect(hand).to be_a(Hand)
       expect(hand.cards.count).to eq(2)
     end
 
-    it 'should take cards from the deck' do
+    it 'takes cards from the deck' do
       expect do
         deck.deal_hand
       end.to change{ deck.count }.by(-2)
