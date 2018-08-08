@@ -45,3 +45,4 @@
 - Overriding `==`
 - Overriding `to_s`
 - Class inheritance
+- `product` method - to create a deck of cards
