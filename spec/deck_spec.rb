@@ -16,6 +16,18 @@ describe Deck do
     end
   end
 
+  describe "#initialize" do
+    it "by default fills itself with 52 cards" do
+      deck = Deck.new
+      expect(deck.count).to eq(52)
+    end
+
+    it "can be initialized with an array of cards" do
+      deck = Deck.new(cards)
+      expect(deck.count).to eq(3)
+    end
+  end
+
   let(:cards) do
     [ double("card", :suit => :spades, :value => :king),
       double("card", :suit => :spades, :value => :queen),
