@@ -46,5 +46,5 @@
 - Overriding `to_s`
 - Class inheritance
 - `product` method - to create a deck of cards
-- `map` method  
 - splat operator - to return cards to deck w/out nested arrays
+- `shift(n)` method
