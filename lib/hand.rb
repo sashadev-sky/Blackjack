@@ -54,21 +54,11 @@ class Hand
 
   def beats?(other_hand)
     # busted hand -> loss
-    if self.busted?
-      return false
-    # less points and the dealer's hand is not busted -> loss
-    elsif self.points < other_hand.points && !other_hand.busted?
-      return false
-    # tie with the dealer -> loss
-    elsif self.points == other_hand.points
-      return false
-    # more points than the dealer and the player's hand is not busted -> win
-    elsif self.points > other_hand.points && !self.busted?
-      return true
-    # player's hand is not busted and dealer's hand is busted -> win
-    elsif !self.busted? && other_hand.busted?
-      return true
-    end
+    return false if self.busted?
+    
+    #given that your hand is not busted, if you have more points than the
+    #dealer or the dealers hand is busted, its a win.
+    (other_hand.busted?) || (self.points > other_hand.points)
   end
 
   def return_cards(deck)
