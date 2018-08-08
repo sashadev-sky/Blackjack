@@ -1,5 +1,3 @@
-require_relative 'card'
-
 class Hand
 
   def self.deal_from(deck)
@@ -55,7 +53,7 @@ class Hand
   def beats?(other_hand)
     # busted hand -> loss
     return false if self.busted?
-    
+
     #given that your hand is not busted, if you have more points than the
     #dealer or the dealers hand is busted, its a win.
     (other_hand.busted?) || (self.points > other_hand.points)
