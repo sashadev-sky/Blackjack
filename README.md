@@ -39,6 +39,7 @@
   - Unit Testing
     - Method doubles
     - Cases where the `dup` method is vital
+    - `respond_to` for checking if variables are exposed
 - `send` method
 - `colorize` gem
   - `background` argument for rendering cards
