@@ -45,7 +45,7 @@ describe Dealer do
   context "with a player" do
     let(:player) { double("player") }
     let(:dealer_hand) { double("hand") }
-    let(:player_hand) { double("player_hand") }
+    let(:player_hand) { double("hand") }
 
     before(:each) do
       dealer.hand = dealer_hand
