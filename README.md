@@ -8,7 +8,7 @@
 - To play,  then run `ruby lib/blackjack.rb` in your terminal
 - This game supports multiple players: currently it is set to one player vs. a dealer
   - To add more, utilize the `add_player` method in the `blackjack.rb` file and save your changes before running the game
-  - Reference the commented out call to `add_player` at the bottom of the file as an example
+  - Reference the commented out `add_player` invocations at the bottom of the file as an example
 
 ## Testing
   - Written in RSpec
@@ -46,4 +46,5 @@
 - Overriding `to_s`
 - Class inheritance
 - `product` method - to create a deck of cards
+- `map` method  
 - splat operator - to return cards to deck w/out nested arrays
