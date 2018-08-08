@@ -1,4 +1,4 @@
-require 'card'
+require 'rspec'
 require 'deck'
 
 describe Deck do
@@ -10,23 +10,20 @@ describe Deck do
     end
 
     it "returns all cards without duplicates" do
-      all_card_vals = Card.suits.product(Card.values).sort
-
-      deduped_cards = all_cards
-        .map { |card| [card.suit, card.value] }
-        .sort
-
-      expect(deduped_cards).to eq(all_card_vals)
+      expect(
+      all_cards.map { |card| [card.suit, card.value] }.uniq.count
+    ).to eq(all_cards.count)
     end
   end
 
   let(:cards) do
     cards = [
-      Card.new(:spades, :king),
-      Card.new(:spades, :queen),
-      Card.new(:spades, :jack)
+      double("card", :suit => :spades, :value => :king),
+      double("card", :suit => :spades, :value => :queen),
+      double("card", :suit => :spades, :value => :jack)
     ]
   end
+
   let(:deck) do
     Deck.new(cards.dup)
   end
@@ -53,9 +50,11 @@ describe Deck do
 
   describe "#return" do
     let(:more_cards) do
-      [ Card.new(:hearts, :four),
-        Card.new(:hearts, :five),
-        Card.new(:hearts, :six) ]
+      more_cards = [
+        double("card", :suit => :hearts, :value => :four),
+        double("card", :suit => :hearts, :value => :five),
+        double("card", :suit => :hearts, :value => :six)
+      ]
     end
 
     it "returns cards to the deck" do
