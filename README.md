@@ -40,6 +40,7 @@
     - Test doubles
     - Cases where the `dup` method is vital
     - `respond_to` for checking if variables are exposed
+    - When to use context block
   - Integration Testing
 - `send` method
 - `colorize` gem
