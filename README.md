@@ -38,6 +38,7 @@
 - RSpec
   - Unit Testing
     - Method doubles
+    - Cases where the `dup` method is vital
 - `send` method
 - `colorize` gem
   - `background` argument for rendering cards
