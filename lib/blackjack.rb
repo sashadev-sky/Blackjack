@@ -39,6 +39,7 @@ class BlackjackGame
     dealer.pay_bets
     players.each do |player|
       puts "#{player.name}: Currently has $#{player.bankroll}"
+      puts "                      "
       player.return_cards(deck)
     end
     dealer.reset_bets

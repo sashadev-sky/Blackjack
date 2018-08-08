@@ -35,10 +35,10 @@ class Dealer < Player
   def pay_bets
     @bets.each do |player, bet|
       if player.hand.beats?(self.hand)
-        puts "#{player.name}: wins this hand"
+        puts "#{player.name}: Wins this hand"
         player.pay_winnings(bet * 2)
       else
-        puts "#{player.name}: loses this hand"
+        puts "#{player.name}: Loses this hand"
       end
     end
   end
